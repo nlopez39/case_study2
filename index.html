@@ -15,10 +15,31 @@
     <div class="col-md-12">
     <h1 class=>Case Study #2</h1>
   
-    <form id="form">
-    <input class="form-control" id="user-input" placeholder="Enter">
-    <button id="button" class="btn btn-secondary">Case Study #2</button>
-    </form>
+    <body>
+      <form id="myForm">
+        <input type="file" id="csvFile" accept=".csv" />
+        <br />
+        <input type="submit" value="Submit" />
+      </form>
+      <script>
+        const myForm = document.getElementById("myForm");
+        const csvFile = document.getElementById("csvFile");
+    
+        myForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const input = csvFile.files[0];
+          const reader = new FileReader();
+    
+          reader.onload = function (e) {
+            const text = e.target.result;
+            document.write(text);
+          };
+    
+          reader.readAsText(input);
+        });
+     
+  </script>
+</body>
 
     <table class="table" cellpadding="10">
       <thead>
